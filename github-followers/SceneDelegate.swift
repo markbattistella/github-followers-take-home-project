@@ -13,12 +13,84 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-		guard let _ = (scene as? UIWindowScene) else { return }
+
+		guard let windowScene = (scene as? UIWindowScene) else { return }
+
+		// fill the window to the full screen
+		window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+		
+		// set the window scene to the loaded window scene
+		window?.windowScene = windowScene
+		
+		// set the root to the correct view
+		window?.rootViewController = createTabBar()
+		
+		// show and make it the key view
+		window?.makeKeyAndVisible()
+		
+		configureNavigationBar()
 	}
 
+	// create the search nav controller
+	func createSearchNC() -> UINavigationController {
+		let searchVC = SearchVC()
+		
+		// -- title
+		searchVC.title = "Search"
+		
+		// -- icon and order
+		searchVC.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+		
+		return UINavigationController(rootViewController: searchVC)
+	}
+	
+	// create the favourite nav controller
+	func createFavouritesNC() -> UINavigationController {
+		let favouritesListVC = FavouriteListVC()
+		
+		// -- title
+		favouritesListVC.title = "Favourites"
+		
+		// -- icon and order
+		favouritesListVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
+		
+		return UINavigationController(rootViewController: favouritesListVC)
+	}
+	
+	// create the tab bar items
+	func createTabBar() -> UITabBarController {
+		
+		let tabBar = UITabBarController()
+		
+		// -- set the colour
+		UITabBar.appearance().tintColor = .systemGreen
+		
+		// -- add the items
+		tabBar.viewControllers = [
+			createSearchNC(),
+			createFavouritesNC()
+		]
+		
+		return tabBar
+	}
+	
+	func configureNavigationBar() {
+		UINavigationBar.appearance().tintColor = .systemGreen
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	func sceneDidDisconnect(_ scene: UIScene) {
 		// Called as the scene is being released by the system.
 		// This occurs shortly after the scene enters the background, or when its session is discarded.
