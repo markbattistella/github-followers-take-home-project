@@ -26,7 +26,6 @@ class SearchVC: UIViewController {
 		configureLogoImageView()
 		configureTextField()
 		configureCallToActionButton()
-		
 		createDismissKeyboardTapGesture()
     }
 
@@ -43,15 +42,21 @@ class SearchVC: UIViewController {
 		view.addGestureRecognizer(tap)
 	}
 	
-	//
+	// method: call when submitting form
 	@objc func pushFollowerListVC() {
 		
+		// check if field is empty
 		guard isUsernameEntered else {
-			print("No username entered")
+			
+			presentGFAlertOnMainThread(
+				title: "Empty",
+				message: "Please enter a username to search for",
+				buttonTitle: "OhK"
+			)
 			return
 		}
 		
-		// where to go
+		// view to go to
 		let followerListVC = FollowerListVC()
 		
 		// data to pass
