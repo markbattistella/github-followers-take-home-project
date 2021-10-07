@@ -9,12 +9,9 @@ import UIKit
 
 class GFTextField: UITextField {
 	
+	// what override from default
 	override init(frame: CGRect) {
-		// call the super class
-		// -- all the defaults
 		super.init(frame: frame)
-		
-		// set our defaults
 		configure()
 	}
 	

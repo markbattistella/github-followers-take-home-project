@@ -9,13 +9,9 @@ import UIKit
 
 class GFTitleLabel: UILabel {
 
+	// what override from default
 	override init(frame: CGRect) {
-		
-		// call the super class
-		// -- all the defaults
 		super.init(frame: frame)
-		
-		// set our defaults
 		configure()
 	}
 	
@@ -36,6 +32,6 @@ class GFTitleLabel: UILabel {
 		adjustsFontSizeToFitWidth = true
 		minimumScaleFactor = 0.9
 		lineBreakMode = .byTruncatingTail
-		translatesAutoresizingMaskIntoConstraints = true
+		translatesAutoresizingMaskIntoConstraints = false
 	}
 }
