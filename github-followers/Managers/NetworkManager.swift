@@ -67,4 +67,56 @@ final class NetworkManager {
 		// -- start the data fetch
 		task.resume()
 	}
-}
+
+
+	// MARK: - get the searched user data
+	func getUserInfo(for username: String, completed: @escaping (Result<UserModel, GFError>) -> Void) {
+		
+		let endpoint = baseUrl + "\(username)"
+		
+		// -- valid url
+		guard let url = URL(string: endpoint) else {
+			completed(.failure(.invalidUsername))
+			return
+		}
+		
+		// -- build the session
+		let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+			
+			// -- error
+			if let _ = error {
+				completed(.failure(.unableToComplete))
+				return
+			}
+			
+			// -- response
+			guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+				completed(.failure(.invalidResponse))
+				return
+			}
+			
+			// -- data
+			guard let data = data else {
+				completed(.failure(.invalidData))
+				return
+			}
+			
+			// -- working
+			do {
+				let decoder = JSONDecoder()
+				
+				// convert from snake to camel case
+				decoder.keyDecodingStrategy = .convertFromSnakeCase
+				
+				let user = try decoder.decode(UserModel.self, from: data)
+				
+				completed(.success(user))
+				
+			} catch {
+				completed(.failure(.invalidData))
+			}
+		}
+		
+		// -- start the data fetch
+		task.resume()
+	}}
