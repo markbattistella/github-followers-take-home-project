@@ -29,6 +29,9 @@
 		A329A162270EE96200A57965 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329A161270EE96200A57965 /* UIHelper.swift */; };
 		A329A16A2710069000A57965 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329A1692710069000A57965 /* GFEmptyStateView.swift */; };
 		A329A16C2710121100A57965 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A329A16B2710121100A57965 /* UserInfoVC.swift */; };
+		A3A2418627116B61000C3215 /* GFUserInfoHeaderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2418527116B61000C3215 /* GFUserInfoHeaderVC.swift */; };
+		A3A2418827116BE5000C3215 /* GFSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2418727116BE5000C3215 /* GFSecondaryTitleLabel.swift */; };
+		A3A2418A27117200000C3215 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2418927117200000C3215 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		A329A161270EE96200A57965 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		A329A1692710069000A57965 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 		A329A16B2710121100A57965 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
+		A3A2418527116B61000C3215 /* GFUserInfoHeaderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFUserInfoHeaderVC.swift; sourceTree = "<group>"; };
+		A3A2418727116BE5000C3215 /* GFSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFSecondaryTitleLabel.swift; sourceTree = "<group>"; };
+		A3A2418927117200000C3215 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,7 @@
 			children = (
 				A329A15A270EB61300A57965 /* GFError.swift */,
 				A329A161270EE96200A57965 /* UIHelper.swift */,
+				A3A2418927117200000C3215 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -206,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				A329A149270E56F200A57965 /* GFAlertVC.swift */,
+				A3A2418527116B61000C3215 /* GFUserInfoHeaderVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -215,6 +223,7 @@
 			children = (
 				A329A145270E53CE00A57965 /* GFTitleLabel.swift */,
 				A329A147270E563200A57965 /* GFBodyLabel.swift */,
+				A3A2418727116BE5000C3215 /* GFSecondaryTitleLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -303,14 +312,17 @@
 				A329A14C270E6AAC00A57965 /* UIViewController+Ext.swift in Sources */,
 				A3127347270D745A00094BB7 /* GFButton.swift in Sources */,
 				A329A162270EE96200A57965 /* UIHelper.swift in Sources */,
+				A3A2418A27117200000C3215 /* Constants.swift in Sources */,
 				A329A160270EBD3300A57965 /* GFAvatarImageView.swift in Sources */,
 				A329A155270E942200A57965 /* UserModel.swift in Sources */,
 				A329A14A270E56F200A57965 /* GFAlertVC.swift in Sources */,
 				A329A15E270EBCBC00A57965 /* FollowerCell.swift in Sources */,
 				A329A15B270EB61300A57965 /* GFError.swift in Sources */,
+				A3A2418627116B61000C3215 /* GFUserInfoHeaderVC.swift in Sources */,
 				A329A148270E563200A57965 /* GFBodyLabel.swift in Sources */,
 				A329A153270E936000A57965 /* FollowerModel.swift in Sources */,
 				A329A146270E53CE00A57965 /* GFTitleLabel.swift in Sources */,
+				A3A2418827116BE5000C3215 /* GFSecondaryTitleLabel.swift in Sources */,
 				A329A16A2710069000A57965 /* GFEmptyStateView.swift in Sources */,
 				A329A158270EAD1700A57965 /* NetworkManager.swift in Sources */,
 				A312732F270D681D00094BB7 /* AppDelegate.swift in Sources */,
