@@ -17,6 +17,7 @@ class UserInfoVC: UIViewController {
 	
 	var username: String!
 	
+	// what override from default
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		configureViewController()
@@ -40,6 +41,8 @@ class UserInfoVC: UIViewController {
 				case .success(let user):
 					DispatchQueue.main.async {
 						self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
+						self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewOne)
+						self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewTwo)
 					}
 					
 				case .failure(let error):
@@ -57,9 +60,6 @@ class UserInfoVC: UIViewController {
 		
 		let padding: CGFloat = 20
 		let itemHeight: CGFloat = 140
-
-		itemViewOne.backgroundColor = .systemPink
-		itemViewTwo.backgroundColor = .systemBlue
 
 		itemViews = [headerView, itemViewOne, itemViewTwo]
 

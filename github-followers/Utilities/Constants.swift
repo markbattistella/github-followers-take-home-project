@@ -9,4 +9,9 @@ import Foundation
 
 enum SFSymbols {
 	static let location = "pin.fill"
+	static let repo = "folder.fill"
+	static let gists = "text.alignleft"
+	static let followers = "heart.fill"
+	static let following = "person.2.fill"
+	
 }
