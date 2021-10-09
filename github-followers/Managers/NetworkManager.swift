@@ -81,7 +81,7 @@ final class NetworkManager {
 		}
 		
 		// -- build the session
-		let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+		let task = URLSession.shared.dataTask(with: url) { data, response, error in
 			
 			// -- error
 			if let _ = error {

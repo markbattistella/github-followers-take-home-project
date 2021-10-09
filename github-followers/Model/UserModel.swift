@@ -16,7 +16,7 @@ struct UserModel: Decodable {
 	let publicRepos: Int
 	let publicGists: Int
 	let htmlUrl: String
-	let following: Int
 	let followers: Int
-	let createAt: String
+	let following: Int
+	let createdAt: String
 }

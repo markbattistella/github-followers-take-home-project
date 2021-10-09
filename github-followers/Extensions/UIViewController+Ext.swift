@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 // fileprivate is globally accessible in this file only
 fileprivate var containerView: UIView!
@@ -71,5 +72,12 @@ extension UIViewController {
 		
 		// add it to view
 		view.addSubview(emptyStateView)
+	}
+	
+	//
+	func presentSafariVC(with url: URL) {
+		let safariVC = SFSafariViewController(url: url)
+		safariVC.preferredControlTintColor = .systemGreen
+		present(safariVC, animated: true)
 	}
 }
