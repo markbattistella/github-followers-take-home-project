@@ -44,5 +44,6 @@ class GFTextField: UITextField {
 		autocorrectionType = .no
 		returnKeyType = .search
 		autocapitalizationType = .none
+		clearButtonMode = .whileEditing
 	}
 }
