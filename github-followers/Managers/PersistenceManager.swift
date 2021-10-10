@@ -12,7 +12,6 @@ enum PersistenceActionType {
 	case add, remove
 }
 
-
 enum PersistenceManager {
 	static private let defaults = UserDefaults.standard
 	
@@ -32,32 +31,29 @@ enum PersistenceManager {
 			
 			// -- switch the result
 			switch result {
-				case .success(let favourites):
-					
-					// make it mutable
-					var retrievedFavourites = favourites
+				case .success(var favourites):
 					
 					// swtich on action
 					switch actionType {
 						case .add:
 							
 							// stop adding existing data
-							guard !retrievedFavourites.contains(favourite) else {
+							guard !favourites.contains(favourite) else {
 								completed(.alreadyInFavourites)
 								return
 							}
 							
 							// add the item to the array
-							retrievedFavourites.append(favourite)
+							favourites.append(favourite)
 							
 						case .remove:
 							
 							// find all matches and remove
-							retrievedFavourites.removeAll { $0.login == favourite.login }
+							favourites.removeAll { $0.login == favourite.login }
 					}
 					
 					// save the data to the user defaults
-					completed(save(favourites: retrievedFavourites))
+					completed(save(favourites: favourites))
 					
 				case .failure(let error):
 					completed(error)

@@ -16,8 +16,6 @@ class GFItemInfoVC: UIViewController {
 	
 	var user: UserModel!
 	
-	weak var delegate: UserInfoVCDelegate!
-	
 	init(user: UserModel) {
 		super.init(nibName: nil, bundle: nil)
 		self.user = user
@@ -58,9 +56,8 @@ class GFItemInfoVC: UIViewController {
 	
 	//
 	private func layoutUI() {
-		view.addSubview(stackView)
-		view.addSubview(actionButton)
-		
+		view.addSubviews(stackView, actionButton)
+
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		let padding: CGFloat = 20
 		
