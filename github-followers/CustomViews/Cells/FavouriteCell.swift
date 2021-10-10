@@ -8,7 +8,7 @@
 import UIKit
 
 class FavouriteCell: UITableViewCell {
-
+	
 	static let resuseID = "FavouriteCell"
 	let avatarImageView = GFAvatarImageView(frame: .zero)
 	let usernameLabel = GFTitleLabel(textAlignment: .left, fontSize: 26)
@@ -18,14 +18,19 @@ class FavouriteCell: UITableViewCell {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		configure()
 	}
-
+	
 	// for storyboard
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
+	
 	// set up the cell
 	func set(favourite: FollowerModel) {
 		usernameLabel.text = favourite.login
-		avatarImageView.downloadImage(from: favourite.avatarUrl)
+		NetworkManager.shared.downloadImage(from: favourite.avatarUrl) { [weak self] image in
+			guard let self = self else { return }
+			DispatchQueue.main.async {
+				self.avatarImageView.image = image
+			}
+		}
 	}
 	
 	// func: default customisation

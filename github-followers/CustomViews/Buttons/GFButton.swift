@@ -19,11 +19,10 @@ class GFButton: UIButton {
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
 	// allow customisation
-	init(backgroundColour: UIColor, title: String) {
-		super.init(frame: .zero)
+	convenience init(backgroundColour: UIColor, title: String) {
+		self.init(frame: .zero)
 		self.backgroundColor = backgroundColour
 		self.setTitle(title, for: .normal)
-		configure()
 	}
 	
 	// func: default customisation

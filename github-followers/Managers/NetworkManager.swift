@@ -108,6 +108,9 @@ final class NetworkManager {
 				// convert from snake to camel case
 				decoder.keyDecodingStrategy = .convertFromSnakeCase
 				
+				// recognise date standard
+				decoder.dateDecodingStrategy = .iso8601
+				
 				let user = try decoder.decode(UserModel.self, from: data)
 				
 				completed(.success(user))
@@ -119,4 +122,43 @@ final class NetworkManager {
 		
 		// -- start the data fetch
 		task.resume()
-	}}
+	}
+	
+	//
+	func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+		// -- convert string to nsstring
+		let cacheKey = NSString(string: urlString)
+		
+		// -- check the cache for the image based on key
+		if let image = cache.object(forKey: cacheKey) {
+			completed(image)
+			return
+		}
+		
+		// -- download if not in cache
+		
+		// -- normal network call for url
+		guard let url = URL(string: urlString) else {
+			completed(nil)
+			return
+		}
+		
+		let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+			
+			// for ARC - [weak self]
+			guard let self = self,
+				  error == nil,
+				  let response = response as? HTTPURLResponse, response.statusCode == 200,
+				  let data = data,
+				  let image = UIImage(data: data) else {
+					  completed(nil)
+					  return
+				  }
+
+			// cache the image
+			self.cache.setObject(image, forKey: cacheKey)
+			completed(image)
+		}
+		task.resume()
+	}
+}

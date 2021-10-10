@@ -28,45 +28,4 @@ class GFAvatarImageView: UIImageView {
 		image = placeholderImage
 		translatesAutoresizingMaskIntoConstraints = false
 	}
-	
-	//
-	func downloadImage(from urlString: String) {
-		
-		// -- convert string to nsstring
-		let cacheKey = NSString(string: urlString)
-		
-		// -- check the cache for the image based on key
-		if let image = cache.object(forKey: cacheKey) {
-			self.image = image
-			return
-		}
-		
-		// -- download if not in cache
-		
-		// -- normal network call for url
-		guard let url = URL(string: urlString) else { return }
-		
-		let task = URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-			
-			// for ARC - [weak self]
-			guard let self = self else { return }
-			
-			// exit if any error
-			if error != nil { return }
-			guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return	}
-			guard let data = data else { return	}
-			
-			// unwrap image data
-			guard let image = UIImage(data: data) else { return }
-			
-			// cache the image
-			self.cache.setObject(image, forKey: cacheKey)
-			
-			// main thread for ui update
-			DispatchQueue.main.async {
-				self.image = image
-			}
-		}
-		task.resume()
-	}
 }

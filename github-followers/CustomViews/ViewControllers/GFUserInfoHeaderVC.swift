@@ -17,7 +17,7 @@ class GFUserInfoHeaderVC: UIViewController {
 	let bioLabel = GFBodyLabel(textAlignment: .left)
 	
 	var user: UserModel!
-
+	
 	init(user: UserModel) {
 		super.init(nibName: nil, bundle: nil)
 		self.user = user
@@ -25,17 +25,17 @@ class GFUserInfoHeaderVC: UIViewController {
 	
 	// for storyboard
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		addSubViews()
 		layoutUI()
 		configureUIElements()
-    }
+	}
 	
 	//
 	func configureUIElements() {
-		avatarImageView.downloadImage(from: user.avatarUrl)
+		downloadAvatarImage()
 		usernameLabel.text = user.login
 		nameLabel.text = user.name ?? ""
 		locationLabel.text = user.location ?? "No location"
@@ -44,7 +44,16 @@ class GFUserInfoHeaderVC: UIViewController {
 		locationImageView.image = UIImage(systemName: SFSymbols.location)
 		locationImageView.tintColor = .secondaryLabel
 	}
-
+	
+	func downloadAvatarImage() {
+		NetworkManager.shared.downloadImage(from: user.avatarUrl) { [weak self] image in
+			guard let self = self else { return }
+			DispatchQueue.main.async {
+				self.avatarImageView.image = image
+			}
+		}
+	}
+	
 	//
 	func addSubViews() {
 		view.addSubview(avatarImageView)
