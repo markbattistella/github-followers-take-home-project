@@ -146,12 +146,12 @@
 			isa = PBXGroup;
 			children = (
 				A3A2419C2712A27A000C3215 /* TabBarControllers */,
-				A329A1682710066C00A57965 /* Views */,
+				A329A1672710062300A57965 /* Labels */,
 				A329A1662710061900A57965 /* ViewControllers */,
 				A329A1652710060B00A57965 /* ImageViews */,
 				A329A1642710060000A57965 /* TextFields */,
 				A329A163271005F600A57965 /* Buttons */,
-				A329A1672710062300A57965 /* Labels */,
+				A329A1682710066C00A57965 /* Views */,
 				A329A15C270EBC9400A57965 /* Cells */,
 			);
 			path = CustomViews;
@@ -202,8 +202,8 @@
 		A329A159270EB5FF00A57965 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				A329A15A270EB61300A57965 /* GFError.swift */,
 				A329A161270EE96200A57965 /* UIHelper.swift */,
+				A329A15A270EB61300A57965 /* GFError.swift */,
 				A3A2418927117200000C3215 /* Constants.swift */,
 			);
 			path = Utilities;
@@ -541,6 +541,7 @@
 				DEVELOPMENT_TEAM = 36N7S5EZ55;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "github-followers/Support/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Github Followers";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -571,6 +572,7 @@
 				DEVELOPMENT_TEAM = 36N7S5EZ55;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "github-followers/Support/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Github Followers";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

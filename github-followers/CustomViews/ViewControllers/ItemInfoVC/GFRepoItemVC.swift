@@ -14,7 +14,7 @@ protocol GFRepoItemVCDelegate: AnyObject {
 class GFRepoItemVC: GFItemInfoVC {
 	
 	weak var delegate: GFRepoItemVCDelegate!
-
+	
 	init(user: UserModel, delegate: GFRepoItemVCDelegate) {
 		super.init(user: user)
 		self.delegate = delegate

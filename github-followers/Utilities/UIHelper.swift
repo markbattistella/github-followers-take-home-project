@@ -10,7 +10,6 @@ import UIKit
 enum UIHelper {
 	
 	static func createColumnFlowLayout(in view: UIView, columns: Int) -> UICollectionViewFlowLayout {
-		// math
 		let width = view.bounds.width
 		let spacing: CGFloat = 12
 		let columnSpaces: CGFloat = CGFloat(columns + 1)

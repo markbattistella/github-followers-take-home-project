@@ -8,7 +8,7 @@
 import UIKit
 
 class GFSecondaryTitleLabel: UILabel {
-
+	
 	override init(frame: CGRect) {
 		
 		// call the super class
@@ -36,5 +36,5 @@ class GFSecondaryTitleLabel: UILabel {
 		lineBreakMode = .byTruncatingTail
 		translatesAutoresizingMaskIntoConstraints = false
 	}
-
+	
 }

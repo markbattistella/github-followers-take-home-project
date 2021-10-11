@@ -8,7 +8,7 @@
 import UIKit
 
 class GFBodyLabel: UILabel {
-
+	
 	override init(frame: CGRect) {
 		
 		// call the super class

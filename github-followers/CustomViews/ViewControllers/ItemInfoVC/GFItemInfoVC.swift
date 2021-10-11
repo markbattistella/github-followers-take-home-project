@@ -8,7 +8,7 @@
 import UIKit
 
 class GFItemInfoVC: UIViewController {
-
+	
 	let stackView = UIStackView()
 	let itemInfoViewOne = GFItemInfoView()
 	let itemInfoViewTwo = GFItemInfoView()
@@ -20,18 +20,18 @@ class GFItemInfoVC: UIViewController {
 		super.init(nibName: nil, bundle: nil)
 		self.user = user
 	}
-
+	
 	// for storyboard
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-
+	
 	// what override from default
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		configureBackgroundView()
 		configureStackView()
 		configureActionButton()
 		layoutUI()
-    }
+	}
 	
 	//
 	private func configureBackgroundView() {
@@ -57,7 +57,7 @@ class GFItemInfoVC: UIViewController {
 	//
 	private func layoutUI() {
 		view.addSubviews(stackView, actionButton)
-
+		
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		let padding: CGFloat = 20
 		
