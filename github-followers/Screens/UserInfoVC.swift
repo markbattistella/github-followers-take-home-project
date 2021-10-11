@@ -11,7 +11,7 @@ protocol UserInfoVCDelegate: AnyObject {
 	func didRequestFollowers(for username: String)
 }
 
-class UserInfoVC: UIViewController {
+class UserInfoVC: GFDataLoadingVC {
 	
 	let scrollView = UIScrollView()
 	let contentView = UIView()
@@ -44,21 +44,21 @@ class UserInfoVC: UIViewController {
 	
 	// -- network call
 	func getUserInfo() {
-		NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
-			guard let self = self else { return }
-			
-			switch result {
-				case .success(let user):
-					DispatchQueue.main.async {
-						self.configureUIElements(with: user)
-					}
-					
-				case .failure(let error):
-					self.presentGFAlertOnMainThread(
+		
+		Task {
+			do {
+				let user = try await NetworkManager.shared.getUserInfo(for: username)
+				configureUIElements(with: user)
+			} catch {
+				if let error = error as? GFError {
+					presentGFAlert(
 						title: "Something went wrong",
 						message: error.rawValue,
 						buttonTitle: "OK"
 					)
+				} else {
+					presentDefaultError()
+				}
 			}
 		}
 	}
@@ -79,7 +79,7 @@ class UserInfoVC: UIViewController {
 		self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
 		self.add(childVC: GFRepoItemVC(user: user, delegate: self), to: self.itemViewOne)
 		self.add(childVC: GFFollowerItemVC(user: user, delegate: self), to: self.itemViewTwo)
-		self.dateLabel.text = "Github since \(user.createdAt.convertToDisplayFormat())"
+		self.dateLabel.text = "Github since \(user.createdAt.converToMonthYearFormat())"
 	}
 	
 	// -- layout
@@ -134,7 +134,7 @@ extension UserInfoVC: GFRepoItemVCDelegate {
 	// -- what to do on github button
 	func didTapGithubProfile(for user: UserModel) {
 		guard let url = URL(string: user.htmlUrl) else {
-			presentGFAlertOnMainThread(
+			presentGFAlert(
 				title: "Invalid URL",
 				message: "The URL attached to this user is invalid",
 				buttonTitle: "OK"
@@ -150,9 +150,14 @@ extension UserInfoVC: GFFollowerItemVCDelegate {
 	
 	func didTapGetFollowers(for user: UserModel) {
 		guard user.followers != 0 else {
-			presentGFAlertOnMainThread(title: "No followers", message: "This user has no followers", buttonTitle: "So sad")
+			presentGFAlert(
+				title: "No followers",
+				message: "This user has no followers",
+				buttonTitle: "So sad"
+			)
 			return
 		}
 		delegate.didRequestFollowers(for: user.login)
+		dismissVC()
 	}
 }

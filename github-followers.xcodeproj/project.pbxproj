@@ -40,7 +40,6 @@
 		A3A241902711978C000C3215 /* GFRepoItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2418F2711978C000C3215 /* GFRepoItemVC.swift */; };
 		A3A2419227119961000C3215 /* GFFollowerItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2419127119961000C3215 /* GFFollowerItemVC.swift */; };
 		A3A2419527124A02000C3215 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2419427124A02000C3215 /* Date+Ext.swift */; };
-		A3A2419727124A21000C3215 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2419627124A21000C3215 /* String+Ext.swift */; };
 		A3A2419927125BA5000C3215 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2419827125BA5000C3215 /* PersistenceManager.swift */; };
 		A3A2419B27129988000C3215 /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2419A27129988000C3215 /* FavouriteCell.swift */; };
 		A3A2419E2712A295000C3215 /* GFTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A2419D2712A295000C3215 /* GFTabBarController.swift */; };
@@ -83,7 +82,6 @@
 		A3A2418F2711978C000C3215 /* GFRepoItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFRepoItemVC.swift; sourceTree = "<group>"; };
 		A3A2419127119961000C3215 /* GFFollowerItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFollowerItemVC.swift; sourceTree = "<group>"; };
 		A3A2419427124A02000C3215 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		A3A2419627124A21000C3215 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		A3A2419827125BA5000C3215 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		A3A2419A27129988000C3215 /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
 		A3A2419D2712A295000C3215 /* GFTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTabBarController.swift; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 			children = (
 				A329A14B270E6AAC00A57965 /* UIViewController+Ext.swift */,
 				A3A2419427124A02000C3215 /* Date+Ext.swift */,
-				A3A2419627124A21000C3215 /* String+Ext.swift */,
 				A32DD3502712C6B70061C2B5 /* UIView+Ext.swift */,
 				A32DD3522712CF6E0061C2B5 /* UITableView+Ext.swift */,
 			);
@@ -365,7 +362,6 @@
 				A3127349270D778300094BB7 /* GFTextField.swift in Sources */,
 				A3127343270D6D4800094BB7 /* SearchVC.swift in Sources */,
 				A312734B270D811300094BB7 /* FollowerListVC.swift in Sources */,
-				A3A2419727124A21000C3215 /* String+Ext.swift in Sources */,
 				A329A14C270E6AAC00A57965 /* UIViewController+Ext.swift in Sources */,
 				A32DD34F2712B6B30061C2B5 /* GFDataLoadingVC.swift in Sources */,
 				A3127347270D745A00094BB7 /* GFButton.swift in Sources */,
@@ -465,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -520,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -547,7 +543,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,7 +574,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

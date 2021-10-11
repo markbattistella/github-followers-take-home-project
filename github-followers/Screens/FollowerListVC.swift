@@ -72,35 +72,31 @@ class FollowerListVC: GFDataLoadingVC {
 		navigationItem.searchController = searchController
 	}
 	
+
 	func getFollowers(username: String, page: Int) {
 		
 		// show the activity indicator
 		showLoadingView()
-	
 		isLoading = true
 		
-		NetworkManager.shared.getFollowers(for: username, page: page) { [weak self] result in
-			
-			// for weak self
-			guard let self = self else { return }
-			
-			// remove the loading
-			self.dismissLoadingView()
-			
-			// -- switch on the results
-			switch result {
-				case .success(let followers):
-					self.updateUI(with: followers)
-					
-				case .failure(let error):
-					self.presentGFAlertOnMainThread(
+		Task {
+			do {
+				let followers = try await NetworkManager.shared.getFollowers(for: username, page: page)
+				updateUI(with: followers)
+				dismissLoadingView()
+			} catch {
+				if let gfError = error as? GFError {
+					presentGFAlert(
 						title: "Bad stuff happened",
-						message: error.rawValue,
+						message: gfError.rawValue,
 						buttonTitle: "OK"
 					)
+				} else {
+					presentDefaultError()
+				}
+
+				dismissLoadingView()
 			}
-			
-			self.isLoading = false
 		}
 	}
 	
@@ -159,41 +155,47 @@ class FollowerListVC: GFDataLoadingVC {
 			guard let self = self else { return }
 			
 			guard let error = error else {
-				self.presentGFAlertOnMainThread(
-					title: "Success!",
-					message: "You have favourited a user",
-					buttonTitle: "YAY!"
-				)
+				
+				DispatchQueue.main.async {
+					self.presentGFAlert(
+						title: "Success!",
+						message: "You have favourited a user",
+						buttonTitle: "YAY!"
+					)
+				}
 				return
 			}
 			
-			self.presentGFAlertOnMainThread(
-				title: "Something went wrong",
-				message: error.rawValue,
-				buttonTitle: "OK"
-			)
+			DispatchQueue.main.async {
+				self.presentGFAlert(
+					title: "Something went wrong",
+					message: error.rawValue,
+					buttonTitle: "OK"
+				)
+			}
 		}
 	}
 	
 	@objc func addButtonTapped() {
 		showLoadingView()
-		NetworkManager.shared.getUserInfo(for: username) { [weak self] result in
-			
-			guard let self = self else { return }
-			
-			self.dismissLoadingView()
-			
-			switch result {
-				case .success(let user):
-					
-					self.addUserToFavourites(user: user)
-					
-				case .failure(let error):
-					self.presentGFAlertOnMainThread(
+		
+		Task {
+			do {
+				let user = try await NetworkManager.shared.getUserInfo(for: username)
+				addUserToFavourites(user: user)
+				dismissLoadingView()
+				
+			} catch {
+				if let gfError = error as? GFError {
+					presentGFAlert(
 						title: "Something went wrong",
-						message: error.rawValue,
+						message: gfError.rawValue,
 						buttonTitle: "OK"
 					)
+				} else {
+					presentDefaultError()
+				}
+				dismissLoadingView()
 			}
 		}
 	}

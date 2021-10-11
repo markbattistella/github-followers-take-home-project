@@ -19,23 +19,24 @@ class GFButton: UIButton {
 	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 	
 	// allow customisation
-	convenience init(backgroundColour: UIColor, title: String) {
+	convenience init(colour: UIColor, title: String) {
 		self.init(frame: .zero)
-		self.backgroundColor = backgroundColour
-		self.setTitle(title, for: .normal)
+		set(colour: colour, title: title)
 	}
 	
 	// func: default customisation
 	private func configure() {
-		layer.cornerRadius = 10
-		setTitleColor(.white, for: .normal)
-		titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+		configuration = .filled()
+		configuration?.cornerStyle = .capsule
 		translatesAutoresizingMaskIntoConstraints = false
 	}
 	
 	// set from other views
-	func set(backgroundColour: UIColor, title: String) {
-		self.backgroundColor = backgroundColour
-		setTitle(title, for: .normal)
+	final func set(colour: UIColor, title: String) {
+		configuration?.baseBackgroundColor = colour
+		configuration?.baseForegroundColor = .systemBackground
+		configuration?.title = title
+		configuration?.imagePadding = 6
+		configuration?.imagePlacement = .leading
 	}
 }

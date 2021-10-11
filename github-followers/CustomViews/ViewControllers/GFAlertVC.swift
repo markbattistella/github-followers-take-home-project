@@ -13,7 +13,7 @@ class GFAlertVC: UIViewController {
 	let containerView = GFAlertContainerView()
 	let titleLabel = GFTitleLabel(textAlignment: .center, fontSize: 20)
 	let messageLabel = GFBodyLabel(textAlignment: .center)
-	let actionButton = GFButton(backgroundColour: .systemRed, title: "OK")
+	let actionButton = GFButton(colour: .systemRed, title: "OK")
 	
 	// what we can pass in
 	var alertTitle: String?
